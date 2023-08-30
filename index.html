@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>City Dashboard</title>
+    <style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        select {
+            padding: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #288ca3;
+            color: rgb(60, 149, 193);
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1034aa;
+        }
+        h2, h3 {
+            color: #333;
+            margin-top: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        td, th {
+            border: 1px solid #ccc;
+            padding: 5px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        .narrative {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .swot {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .city-option {
+            display: inline-block;
+            padding: 10px;
+            margin: 5px;
+            background-color: #80b5ba;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .city-option:hover {
+            background-color: #29477b;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function fetchDashboard(city) {
+            fetch('/get_dashboard', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ city: city })
+            })
+            .then(response => response.json())
+            .then(data => updateDashboard(data));
+        }
+
+        function updateDashboard(data) {
+            const dashboardContainer = document.getElementById('dashboard-container');
+            dashboardContainer.innerHTML = `
+                <h2>${data.city} Overview</h2>
+                <table style="width: 50%;">
+                    <tr>
+                        <th>Category</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>City Budget</td>
+                        <td>${data.budget}</td>
+                    </tr>
+                    <tr>
+                        <td>Population</td>
+                        <td>${data.population}</td>
+                    </tr>
+                    <tr>
+                        <td>Visible Minority %</td>
+                        <td>${data.visible_minority_percentage}</td>
+                    </tr>
+                    <tr>
+                        <td>Black Population %</td>
+                        <td>${data.black_population_percentage}</td>
+                    </tr>
+                    <tr>
+                        <td>Immigrant Population %</td>
+                        <td>${data.immigrant_population_percentage}</td>
+                    </tr>
+                    <tr>
+                        <td>Newcomer Population %</td>
+                        <td>${data.newcomer_population_percentage}</td>
+                    </tr>
+                    <tr>
+                        <td>Unemployment %</td>
+                        <td>${data.unemployment_percentage}</td>
+                    </tr>
+                </table>
+                <h3 class="narrative">Workforce Development Focus</h3>
+                <p>${data.workforce_development_focus}</p>
+                <h3 class="narrative">Employment Situation</h3>
+                <p>${data.employment_situation}</p>
+                <h3 class="narrative">Tech Sector Growth</h3>
+                <p>${data.tech_sector_growth}</p>
+                <h3 class="swot">SWOT Analysis</h3>
+                <p>${data.swot_analysis}</p>
+            `;
+        }
+    </script>
+    
+    <h1>Western Tech Municipalities</h1>
+    
+    <div class="city-options">
+        {% for city in cities %}
+            <div class="city-option" onclick="fetchDashboard('{{ city }}')">{{ city }}</div>
+        {% endfor %}
+    </div>
+    
+    <div id="dashboard-container"></div>
+</body>
+</html>
