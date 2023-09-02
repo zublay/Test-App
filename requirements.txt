@@ -168,7 +168,7 @@ mdit-py-plugins @ file:///Users/ec2-user/ci_py311/mdit-py-plugins_1678417716573/
 mdurl @ file:///Users/ec2-user/ci_py311/mdurl_1678381820326/work
 mistune @ file:///Users/ec2-user/ci_py311/mistune_1678317272228/work
 more-itertools @ file:///tmp/build/80754af9/more-itertools_1637733554872/work
-mpmath==1.2.1
+mpmath==1.3.0
 msgpack @ file:///Users/ec2-user/ci_py311/msgpack-python_1678318264150/work
 multidict @ file:///Users/ec2-user/ci_py311/multidict_1678318765630/work
 multipledispatch @ file:///Users/ec2-user/ci_py311/multipledispatch_1678392901644/work
