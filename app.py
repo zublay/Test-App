@@ -48,4 +48,4 @@ def get_dashboard():
     return jsonify(selected_city_data)  # Return the city data as JSON
 
 if __name__ == '__main__':
-    app.run
+    app.run()
