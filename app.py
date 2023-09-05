@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import csv
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 # Define the list of cities (you can modify this list as needed)
 cities = [
