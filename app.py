@@ -40,12 +40,12 @@ def index():
     
     return render_template('index.html', cities=cities, city_data=None)
 
-@app.route('/', methods=['POST'])
+@app.route('/dashboard', methods=['POST'])
 def get_dashboard():
-    data = request.get_json()  # Get the selected city from the request
+    data = request.get_json()
     selected_city = data['city']
     selected_city_data = load_city_data(selected_city)
-    return jsonify(selected_city_data)  # Return the city data as JSON
+    return jsonify(selected_city_data)
 
 if __name__ == '__main__':
     app.run()
