@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>City Dashboard</title>
+    <title>Western Tech Municipalities</title>
     <style>
-     body {
+        body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
         }
@@ -80,7 +80,7 @@
     </style>
 </head>
 <body>
-    <script>
+  <script>
         function fetchDashboard(city) {
             fetch('/get_dashboard', {
                 method: 'POST',
@@ -146,11 +146,16 @@
     <h1>Western Tech Municipalities</h1>
     
     <div class="city-options">
-        {% for city in cities %}
-            <div class="city-option" onclick="fetchDashboard('{{ city }}')">{{ city }}</div>
-        {% endfor %}
+        <!-- This part can also remain the same -->
+        Vancouver
+        Calgary
+        Edmonton
+        Winnipeg
+        Saskatoon
+        Victoria
     </div>
     
     <div id="dashboard-container"></div>
 </body>
 </html>
+
