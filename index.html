@@ -81,17 +81,17 @@
 </head>
 <body>
   <script>
-        function fetchDashboard(city) {
-            fetch('/get_dashboard', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ city: city })
-            })
-            .then(response => response.json())
-            .then(data => updateDashboard(data));
-        }
+    function fetchDashboard(city) {
+        fetch('/get_dashboard', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ city: city })
+        })
+        .then(response => response.json())
+        .then(data => updateDashboard(data));
+    }
 
         function updateDashboard(data) {
             const dashboardContainer = document.getElementById('dashboard-container');
