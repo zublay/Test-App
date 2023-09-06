@@ -40,7 +40,7 @@ def index():
     
     return render_template('index.html', cities=cities, city_data=None)
 
-@app.route('/get_dashboard', methods=['POST'])
+@app.route('/', methods=['POST'])
 def get_dashboard():
     data = request.get_json()  # Get the selected city from the request
     selected_city = data['city']
