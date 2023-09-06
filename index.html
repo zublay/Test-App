@@ -82,7 +82,7 @@
 <body>
   <script>
 function fetchDashboard(city) {
-    fetch('/get_dashboard', {
+    fetch('/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -98,7 +98,6 @@ function fetchDashboard(city) {
         console.error('Fetch Error:', error);
     });
 }
-
 
         function updateDashboard(data) {
             const dashboardContainer = document.getElementById('dashboard-container');
