@@ -3,6 +3,10 @@ import csv
 
 app = Flask(__name__, template_folder='templates')
 
+from flask_cors import CORS
+
+CORS(app)
+
 # Define the list of cities (you can modify this list as needed)
 cities = [
     "Vancouver",
